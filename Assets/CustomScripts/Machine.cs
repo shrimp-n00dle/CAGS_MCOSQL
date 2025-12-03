@@ -23,7 +23,7 @@ CREATE TABLE Machine (
 public class Machine  {
 
 	[PrimaryKey, AutoIncrement]
-	public char serial_number { get; set; }
+	public int serial_number { get; set; }
 
     //IDs
 	public int game_ID { get; set; }
@@ -31,9 +31,9 @@ public class Machine  {
     public int publisher_ID { get; set; }
 
     //MACHINE STUFF
-    public char machine_venue { get; set; }
-    public char machine_condition { get; set; }
-    public char machine_type{ get; set; }
+    public string machine_venue { get; set; }
+    public string machine_condition { get; set; }
+    public string machine_type{ get; set; }
     public int machine_highscore{ get; set; }
 
 	// public override string ToString ()
