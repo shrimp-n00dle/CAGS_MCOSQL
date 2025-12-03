@@ -21,7 +21,7 @@ public class GameLobby : MonoBehaviour
     SearchSNum, DeleteSNum,
     
     /*Update Game Code*/
-    USID,UGName,UGYear,UVenId;
+    USID,UGName,UGYear;
 
 
     // Start is called before the first frame update
@@ -113,7 +113,6 @@ public class GameLobby : MonoBehaviour
             game_ID = int.Parse(USID.text),
             game_title = UGName.text,
             game_release_year = int.Parse(UGYear.text),
-            publisher_ID = int.Parse(UVenId.text)
 
         };
         int key = gameService.updateGame(game);
