@@ -31,9 +31,9 @@ public class AdminService : MonoBehaviour
 		  return db.GetConnection().Table<Admin>();
 	  }
 
-    public IEnumerable<Admin> GetAdmins(string value)
+    public IEnumerable<Admin> GetAdmins(int value)
     {
-		  return db.GetConnection().Table<Admin>().Where(x => x.admin_name == value);
+		  return db.GetConnection().Table<Admin>().Where(x => x.admin_ID == value);
 	  }
 
      public int deleteAdmin(Admin Admin)
