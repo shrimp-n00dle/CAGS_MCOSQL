@@ -6,6 +6,19 @@ using System.IO;
 #endif
 using System.Collections.Generic;
 
+public class GameTitleRow
+{
+    public string game_title { get; set; }
+}
+
+public class GameRow
+{
+    public int game_ID { get; set; }
+    public string game_title { get; set; }
+    public int game_release_year { get; set; }
+}
+
+
 public class DataService  {
 
 	private SQLiteConnection _connection;
@@ -64,7 +77,7 @@ public class DataService  {
 
 	}
 
-	public void CreateDB(){
+	/*public void CreateDB(){
 		_connection.DropTable<Person> ();
 		_connection.CreateTable<Person> ();
 
@@ -94,7 +107,7 @@ public class DataService  {
 				Age = 37
 			}
 		});
-	}
+	}*/
 
 	public IEnumerable<Person> GetPersons(){
 		return _connection.Table<Person>();
@@ -117,4 +130,19 @@ public class DataService  {
 		_connection.Insert (p);
 		return p;
 	}
+
+    public IEnumerable<string> GetAllGameTitles()
+    {
+        var rows = _connection.Query<GameTitleRow>("SELECT game_title FROM Game");
+        foreach (var r in rows)
+            yield return r.game_title;
+    }
+
+    public IEnumerable<GameRow> GetAllGames()
+    {
+        return _connection.Query<GameRow>(
+            "SELECT game_ID, game_title, game_release_year FROM Game");
+    }
+
+
 }
