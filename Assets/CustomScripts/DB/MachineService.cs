@@ -21,4 +21,9 @@ public class MachineService : MonoBehaviour
       return db.GetConnection().Insert(machine);
     }
 
+    public int addMachines(Machine[] machines)
+    {
+      return db.GetConnection().InsertAll(machines);
+    }
+
 }

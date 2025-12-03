@@ -24,7 +24,7 @@ public class MainLobby : MonoBehaviour
         
     }
 
-    //BUTTON BEHAVIOUR
+    /*Machine*/
     public void onCreateMachineDB()
     {
         machService.CreateMachineTable();
@@ -55,5 +55,70 @@ public class MainLobby : MonoBehaviour
         MScore.text = "";
         MType.text = "";
     }
-	
+
+
+       public void onAddMachinesDB()
+    {
+        Machine[] machines = new[]{
+			new Machine{
+
+			serial_number = 121,
+            game_ID = 12001,
+            venue_ID = 3001,
+            publisher_ID = 112343,
+
+
+            machine_venue = "Eastwood",
+            machine_condition = "Working",
+            machine_highscore = 67,
+            machine_type = "Claw Machine"
+			},
+			new Machine{
+
+	        serial_number = 121,
+            game_ID = 12001,
+            venue_ID = 3001,
+            publisher_ID = 112343,
+
+
+            machine_venue = "Eastwood",
+            machine_condition = "Working",
+            machine_highscore = 67,
+            machine_type = "Claw Machine"
+			},
+			new Machine{
+			serial_number = 121,
+            game_ID = 12001,
+            venue_ID = 3001,
+            publisher_ID = 112343,
+
+
+            machine_venue = "Eastwood",
+            machine_condition = "Working",
+            machine_highscore = 67,
+            machine_type = "Claw Machine"
+			},
+			new Machine{
+			serial_number = 121,
+            game_ID = 12001,
+            venue_ID = 3001,
+            publisher_ID = 112343,
+
+
+            machine_venue = "Eastwood",
+            machine_condition = "Working",
+            machine_highscore = 67,
+            machine_type = "Claw Machine"
+			}
+        };
+        int key = machService.addMachines(machines);
+        Debug.Log("Primary key is "  + key);
+
+        SNum.text = "";
+        MVenue.text = "";
+        MCond.text = "";
+        MScore.text = "";
+        MType.text = "";
+    }
+
 }
