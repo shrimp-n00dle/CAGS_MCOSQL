@@ -16,4 +16,9 @@ public class MachineService : MonoBehaviour
 		db.GetConnection().CreateTable<Machine> ();
     }
 
+    public int addMachine(Machine machine)
+    {
+      return db.GetConnection().Insert(machine);
+    }
+
 }
