@@ -18,7 +18,7 @@ public class PubLobby : MonoBehaviour
     SearchSNum, DeleteSNum,
     
     /*Update Publisher Code*/
-    UPid,UPName;
+    UPName;
 
 
     // Start is called before the first frame update
@@ -106,7 +106,7 @@ public class PubLobby : MonoBehaviour
         Publisher publisher = new Publisher
         {
                //Pid,PName, PScore
-            publisher_ID = int.Parse(UPid.text),
+         
             publisher_name = UPName.text,
 
 
@@ -114,7 +114,7 @@ public class PubLobby : MonoBehaviour
         int key = machService.updatePublisher(publisher);
         Debug.Log("Deleted key is  "  + key);
 
-        UPid.text = "";
+       
         UPName.text = "";
     }
 }

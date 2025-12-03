@@ -108,7 +108,7 @@ public class PlayerLobby : MonoBehaviour
         Player player = new Player
         {
                //Pid,PName, PScore
-            player_ID = int.Parse(UPid.text),
+           
             player_name = UPName.text,
             player_highscore = int.Parse(UPScore.text)
 
