@@ -18,7 +18,7 @@ public class PlayerLobby : MonoBehaviour
     SearchSNum, DeleteSNum,
     
     /*Update Player Code*/
-    UPid,UPName, UPScore;
+    UPName, UPScore;
 
 
     // Start is called before the first frame update
@@ -116,7 +116,6 @@ public class PlayerLobby : MonoBehaviour
         int key = machService.updatePlayer(player);
         Debug.Log("Deleted key is  "  + key);
 
-        UPid.text = "";
         UPName.text = "";
         UPScore.text  = "";
     }
