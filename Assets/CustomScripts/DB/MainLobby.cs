@@ -25,6 +25,17 @@ public class MainLobby : MonoBehaviour
     }
 
     /*Machine*/
+
+    private void ToConsole(IEnumerable<Machine> machine){
+		foreach (var m in machine) {
+			ToConsole(machine.ToString());
+		}
+	}
+
+	private void ToConsole(string msg){
+		Debug.Log (msg);
+	}
+
     public void onCreateMachineDB()
     {
         machService.CreateMachineTable();
@@ -119,6 +130,12 @@ public class MainLobby : MonoBehaviour
         MCond.text = "";
         MScore.text = "";
         MType.text = "";
+    }
+
+    public void onGetMachinesDB()
+    {
+        var machines = machService.GetMachines();
+        ToConsole(machines);
     }
 
 }
