@@ -4,15 +4,50 @@ using UnityEngine;
 
 public class ScoreService : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    ScoreDB db;
+
+    public ScoreService()
     {
-        
+        this.db =  new ScoreDB();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateScoreTable(){
+		db.GetConnection().DropTable<ScoreHistory> ();
+		db.GetConnection().CreateTable<ScoreHistory> ();
+    }
+
+    public int addScore(ScoreHistory ScoreHistory)
     {
-        
+      return db.GetConnection().Insert(ScoreHistory);
+    }
+
+    public int addScoreHistorys(ScoreHistory[] ScoreHistorys)
+    {
+      return db.GetConnection().InsertAll(ScoreHistorys);
+    }
+
+    public IEnumerable<ScoreHistory> GetScoreHistorys()
+    {
+		  return db.GetConnection().Table<ScoreHistory>();
+	  }
+
+    public IEnumerable<ScoreHistory> GetScoreHistorys(int value)
+    {
+		  return db.GetConnection().Table<ScoreHistory>().Where(x => x.player_ID == value);
+	  }
+
+     public int deleteScoreHistory(ScoreHistory ScoreHistory)
+    {
+      return db.GetConnection().Delete(ScoreHistory);
+    }
+
+     public int deleteAllScoreHistorys()
+    {
+      return db.GetConnection().DeleteAll<ScoreHistory>();
+    }
+
+     public int updateScoreHistory(ScoreHistory ScoreHistory)
+    {
+      return db.GetConnection().Update(ScoreHistory);
     }
 }

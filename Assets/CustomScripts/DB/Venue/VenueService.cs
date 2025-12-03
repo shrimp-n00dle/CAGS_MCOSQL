@@ -4,15 +4,50 @@ using UnityEngine;
 
 public class VenueService : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    VenueDB db;
+
+    public VenueService()
     {
-        
+        this.db =  new VenueDB();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateVenueTable(){
+		db.GetConnection().DropTable<Venue> ();
+		db.GetConnection().CreateTable<Venue> ();
+    }
+
+    public int addVenue(Venue Venue)
     {
-        
+      return db.GetConnection().Insert(Venue);
+    }
+
+    public int addVenues(Venue[] Venues)
+    {
+      return db.GetConnection().InsertAll(Venues);
+    }
+
+    public IEnumerable<Venue> GetVenues()
+    {
+		  return db.GetConnection().Table<Venue>();
+	  }
+
+    public IEnumerable<Venue> GetVenues(string value)
+    {
+		  return db.GetConnection().Table<Venue>().Where(x => x.venue_name == value);
+	  }
+
+     public int deleteVenue(Venue Venue)
+    {
+      return db.GetConnection().Delete(Venue);
+    }
+
+     public int deleteAllVenues()
+    {
+      return db.GetConnection().DeleteAll<Venue>();
+    }
+
+     public int updateVenue(Venue Venue)
+    {
+      return db.GetConnection().Update(Venue);
     }
 }
