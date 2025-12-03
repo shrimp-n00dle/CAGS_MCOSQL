@@ -35,4 +35,14 @@ public class MachineService : MonoBehaviour
     {
 		  return db.GetConnection().Table<Machine>().Where(x => x.serial_number == value);
 	  }
+
+     public int deleteMachine(Machine machine)
+    {
+      return db.GetConnection().Delete(machine);
+    }
+
+     public int deleteAllMachines()
+    {
+      return db.GetConnection().DeleteAll<Machine>();
+    }
 }

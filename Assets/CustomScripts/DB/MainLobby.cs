@@ -11,7 +11,7 @@ public class MainLobby : MonoBehaviour
     MachineService machService;
     public TMP_InputField SNum,MVenue,MCond,MType, MScore,
     /*Finding Machine Code*/
-    SearchSNum;
+    SearchSNum, DeleteSNum;
 
 
     // Start is called before the first frame update
@@ -148,5 +148,23 @@ public class MainLobby : MonoBehaviour
 
         SearchSNum.text = "";
     }
+    
+    public void onDeleteMachinesDB()
+    {
+        machService.deleteAllMachines();
+    }
 
+
+      public void onDeleteMachineDB()
+    {
+        Machine machine = new Machine
+        {
+            serial_number = int.Parse(DeleteSNum.text),
+
+        };
+        int key = machService.deleteMachine(machine);
+        Debug.Log("Deleted key is  "  + key);
+
+        DeleteSNum.text  = "";
+    }
 }
