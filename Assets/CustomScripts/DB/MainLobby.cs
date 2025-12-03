@@ -9,7 +9,9 @@ public class MainLobby : MonoBehaviour
     
     //Machine Inputs
     MachineService machService;
-    public TMP_InputField SNum,MVenue,MCond,MType, MScore;
+    public TMP_InputField SNum,MVenue,MCond,MType, MScore,
+    /*Finding Machine Code*/
+    SearchSNum;
 
 
     // Start is called before the first frame update
@@ -136,6 +138,15 @@ public class MainLobby : MonoBehaviour
     {
         var machines = machService.GetMachines();
         ToConsole(machines);
+    }
+
+    public void onGetMachinesByNameDB()
+    {
+
+        var machines = machService.GetMachines(int.Parse(SearchSNum.text));
+        ToConsole(machines);
+
+        SearchSNum.text = "";
     }
 
 }
