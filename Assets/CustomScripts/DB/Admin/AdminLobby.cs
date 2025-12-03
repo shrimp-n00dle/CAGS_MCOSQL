@@ -8,7 +8,7 @@ public class AdminLobby : MonoBehaviour
 {
     
     //Admin Inputs
-    AdminService AdminService;
+    AdminService adminService;
 
     [Header ("AdminInputs")]
     public TMP_InputField SID,AName,ALoc,VenId,
@@ -22,7 +22,7 @@ public class AdminLobby : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AdminService = new AdminService();
+        adminService = new AdminService();
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class AdminLobby : MonoBehaviour
 
     public void onCreateAdminDB()
     {
-        AdminService.CreateAdminTable();
+        adminService.CreateAdminTable();
     }
 
     public void onAddAdminDB()
@@ -59,7 +59,7 @@ public class AdminLobby : MonoBehaviour
             venue_ID = int.Parse(VenId.text)
 
         };
-        int key = AdminService.addAdmin(Admin);
+        int key = adminService.addAdmin(Admin);
         Debug.Log("Primary key is "  + key);
 
         SID.text=AName.text=ALoc.text=VenId.text = "";
@@ -67,14 +67,14 @@ public class AdminLobby : MonoBehaviour
 
     public void onGetAdminsDB()
     {
-        var Admins = AdminService.GetAdmins();
+        var Admins = adminService.GetAdmins();
         ToConsole(Admins);
     }
 
     public void onGetAdminsByNameDB()
     {
 
-        var Admins = AdminService.GetAdmins(int.Parse(SearchSNum.text));
+        var Admins = adminService.GetAdmins(int.Parse(SearchSNum.text));
         ToConsole(Admins);
 
         SearchSNum.text = "";
@@ -82,7 +82,7 @@ public class AdminLobby : MonoBehaviour
     
     public void onDeleteAdminsDB()
     {
-        AdminService.deleteAllAdmins();
+        adminService.deleteAllAdmins();
     }
 
 
@@ -93,7 +93,7 @@ public class AdminLobby : MonoBehaviour
             admin_ID  = int.Parse(DeleteSNum.text),
 
         };
-        int key = AdminService.deleteAdmin(Admin);
+        int key = adminService.deleteAdmin(Admin);
         Debug.Log("Deleted key is  "  + key);
 
         DeleteSNum.text  = "";
@@ -102,7 +102,7 @@ public class AdminLobby : MonoBehaviour
 
       public void onUpdateAdminDB()
     {
-        Admin Admin = new Admin
+        Admin admin = new Admin
         {
             admin_ID = int.Parse(USID.text),
             admin_name = UAName.text,
@@ -110,8 +110,8 @@ public class AdminLobby : MonoBehaviour
             venue_ID = int.Parse(UVenId.text)
 
         };
-        int key = AdminService.updateAdmin(Admin);
-        Debug.Log("Deleted key is  "  + key);
+        int key = adminService.updateAdmin(admin);
+        Debug.Log("Updated key is  "  + key);
 
         SID.text=AName.text=ALoc.text=VenId.text = "";
     }
