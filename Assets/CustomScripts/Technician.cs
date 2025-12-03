@@ -10,7 +10,7 @@ using SQLite4Unity3d;
 public class Technician {
 
 	[PrimaryKey, AutoIncrement]
-	public int technician_ID_ID { get; set; }
+	public int technician_ID { get; set; }
 	public string technician_name { get; set; }
 	public string technician_type{ get; set; }
 }
