@@ -13,30 +13,14 @@ public class CreateDBScript : MonoBehaviour {
 
     private void StartSync()
     {
-        var ds = new DataService("arcade.db");
-        //ds.CreateDB();
-
-        /*var people = ds.GetPersons ();
+        var ds = new DataService("tempDatabase.db");
+        ds.CreateDB();
+        
+        var people = ds.GetPersons ();
         ToConsole (people);
         people = ds.GetPersonsNamedRoberto ();
         ToConsole("Searching for Roberto ...");
-        ToConsole (people); */
-
-        /*var titles = ds.GetAllGames();
-        ToConsole("Games in DB:");
-        foreach (var t in titles)
-        {
-            ToConsole(t);
-        }*/
-
-        ToConsole("All games (ID, Title, Year):");
-
-        var games = ds.GetAllGames();           // call the new method
-
-        foreach (var g in games)
-        {
-            ToConsole($"{g.game_ID} - {g.game_title} ({g.game_release_year})");
-        }
+        ToConsole (people); 
     }
 	
 	private void ToConsole(IEnumerable<Person> people){

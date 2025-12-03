@@ -1569,7 +1569,7 @@ namespace SQLite4Unity3d
 				}
 			}
 		}
-    }
+	}
 
 	/// <summary>
 	/// Represents a parsed connection string.
