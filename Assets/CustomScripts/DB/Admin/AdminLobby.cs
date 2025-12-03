@@ -16,7 +16,7 @@ public class AdminLobby : MonoBehaviour
     SearchSNum, DeleteSNum,
     
     /*Update Admin Code*/
-    USID,UAName,UALoc,UVenId;
+    USID,UAName,UALoc;
 
 
     // Start is called before the first frame update
@@ -106,13 +106,12 @@ public class AdminLobby : MonoBehaviour
         {
             admin_ID = int.Parse(USID.text),
             admin_name = UAName.text,
-            admin_location = UALoc.text,
-            venue_ID = int.Parse(UVenId.text)
+            admin_location = UALoc.text
 
         };
         int key = adminService.updateAdmin(admin);
         Debug.Log("Updated key is  "  + key);
 
-        SID.text=AName.text=ALoc.text=VenId.text = "";
+        SID.text=AName.text=ALoc.text = "";
     }
 }
