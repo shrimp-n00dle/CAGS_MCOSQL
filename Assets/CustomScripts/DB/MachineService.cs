@@ -45,4 +45,9 @@ public class MachineService : MonoBehaviour
     {
       return db.GetConnection().DeleteAll<Machine>();
     }
+
+     public int updateMachine(Machine machine)
+    {
+      return db.GetConnection().Update(machine);
+    }
 }

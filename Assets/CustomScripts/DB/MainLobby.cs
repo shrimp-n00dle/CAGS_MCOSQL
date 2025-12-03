@@ -9,9 +9,14 @@ public class MainLobby : MonoBehaviour
     
     //Machine Inputs
     MachineService machService;
+
+    [Header ("MachineInputs")]
     public TMP_InputField SNum,MVenue,MCond,MType, MScore,
     /*Finding Machine Code*/
-    SearchSNum, DeleteSNum;
+    SearchSNum, DeleteSNum,
+    
+    /*Update Machine Code*/
+    UpdateSNum,UpdateMVenue,UpdateMCond,UpdateMScore,UpdateMType;
 
 
     // Start is called before the first frame update
@@ -166,5 +171,32 @@ public class MainLobby : MonoBehaviour
         Debug.Log("Deleted key is  "  + key);
 
         DeleteSNum.text  = "";
+    }
+
+
+      public void onUpdateMachineDB()
+    {
+        Machine machine = new Machine
+        {
+            serial_number = int.Parse(UpdateSNum.text),
+            game_ID = 12001,
+            venue_ID = 3001,
+            publisher_ID = 112343,
+
+
+            machine_venue = UpdateMVenue.text,
+            machine_condition = UpdateMCond.text,
+            machine_highscore = int.Parse(UpdateMScore.text),
+            machine_type = MType.text
+
+        };
+        int key = machService.updateMachine(machine);
+        Debug.Log("Deleted key is  "  + key);
+
+        UpdateSNum.text = "";
+        UpdateMVenue.text = "";
+        UpdateMCond.text = "";
+        UpdateMScore.text = "";
+        UpdateMType.text = "";
     }
 }
